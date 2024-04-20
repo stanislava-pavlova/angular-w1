@@ -1,18 +1,19 @@
-<div>
-  <p>
-    Здравейте, аз съм Станислава Павлова, 3 курс, софтуерни технологии и дизайн
-  </p>
-  <p>Моите хобита и интерси са:</p>
-  <ul>
-    <li>програмиране 💻</li>
-    <li>волейбол 🏐</li>
-    <li>пътувания 🚗</li>
-  </ul>
-  <p>
-    Линк към любим YouTube канал:
-    <a href="https://www.youtube.com/@YesTheory">YesTheory</a>
-  </p>
-  <p>
-    Моят канал предлага уроци по програмиране и демонстрации на мои проекти.
-  </p>
+<div class="accordion">
+  <div
+    class="accordion-item"
+    *ngFor="let item of items; let i = index"
+    (click)="toggleAccordion(i)"
+  >
+    <div class="accordion-header">{{ item.header }}</div>
+    <div class="accordion-content" [class.expanded]="selectedIndex === i">
+      <p *ngIf="!item.type" class="content">{{ item.content }}</p>
+      <a
+        *ngIf="item.type === 'link'"
+        href="{{ item.content }}"
+        target="_blank"
+        class="content"
+        >{{ item.content }}</a
+      >
+    </div>
+  </div>
 </div>
